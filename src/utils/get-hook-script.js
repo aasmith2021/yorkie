@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import normalize from 'normalize-path'
 import stripIndent from 'strip-indent'
 import pkg from '../../package.json' with { type: 'json' }
