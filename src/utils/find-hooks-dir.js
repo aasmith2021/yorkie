@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-function findHooksDir(dir) {
+export default function findHooksDir(dir) {
   if (dir) {
     let gitDir = path.join(dir, '.git')
     if (!fs.existsSync(gitDir)) {
@@ -25,5 +25,3 @@ function findHooksDir(dir) {
     return path.resolve(dir, gitDir, 'hooks')
   }
 }
-
-export default findHooksDir
