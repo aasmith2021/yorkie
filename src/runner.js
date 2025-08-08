@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const execa = require('execa')
+import fs from 'fs'
+import path from 'path'
+import { execa } from 'execa'
 
 const cwd = process.cwd()
 const pkg = fs.readFileSync(path.join(cwd, 'package.json'))
@@ -17,7 +17,7 @@ if (!command) {
 
 console.log(` > running ${hook} hook: ${command}`)
 try {
-  execa.shellSync(command, { stdio: 'inherit' })
+  execa.shellSync(command, { shell: true, stdio: 'inherit' })
 } catch (e) {
   process.exit(1)
 }

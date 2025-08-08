@@ -1,12 +1,10 @@
-'use strict'
-
-const fs = require('fs')
-const path = require('path')
-const findParent = require('./utils/find-parent')
-const findHooksDir = require('./utils/find-hooks-dir')
-const getHookScript = require('./utils/get-hook-script')
-const is = require('./utils/is')
-const hooks = require('./hooks.json')
+import fs from 'fs'
+import path from 'path'
+import findParent from './utils/find-parent.js'
+import findHooksDir from './utils/find-hooks-dir.js'
+import getHookScript from './utils/get-hook-script.js'
+import is from './utils/is.js'
+import hooks from './hooks.js'
 
 const SKIP = 'SKIP'
 const UPDATE = 'UPDATE'
@@ -64,7 +62,7 @@ function createHook(depDir, projectDir, hooksDir, hookName, runnerPath) {
   return SKIP
 }
 
-function installFrom(depDir) {
+export default function installFrom(depDir) {
   try {
     const isInSubNodeModule = (depDir.match(/node_modules/g) || []).length > 1
     if (isInSubNodeModule) {
@@ -115,5 +113,3 @@ function installFrom(depDir) {
     console.error(e)
   }
 }
-
-module.exports = installFrom

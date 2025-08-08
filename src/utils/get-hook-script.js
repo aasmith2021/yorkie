@@ -1,8 +1,8 @@
-'use strict'
-
-const normalize = require('normalize-path')
-const stripIndent = require('strip-indent')
-const pkg = require('../../package.json')
+import fs from 'fs'
+import path from 'path'
+import normalize from 'normalize-path'
+import stripIndent from 'strip-indent'
+import pkg from '../../package.json' with { type: 'json' }
 
 function platformSpecific() {
   // On OS X and Linux, try to use nvm if it's installed
@@ -37,7 +37,7 @@ function platformSpecific() {
   }
 }
 
-module.exports = function getHookScript(hookName, relativePath, runnerPath) {
+export default function getHookScript(hookName, relativePath, runnerPath) {
   // On Windows normalize path (i.e. convert \ to /)
   const normalizedPath = normalize(relativePath)
 

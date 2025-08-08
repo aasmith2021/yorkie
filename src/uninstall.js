@@ -1,10 +1,8 @@
-'use strict'
-
-const fs = require('fs')
-const hooks = require('./hooks.json')
-const findParent = require('./utils/find-parent')
-const findHooksDir = require('./utils/find-hooks-dir')
-const is = require('./utils/is')
+import fs from 'fs'
+import findParent from './utils/find-parent.js'
+import findHooksDir from './utils/find-hooks-dir.js'
+import is from './utils/is.js'
+import hooks from './hooks.js'
 
 function removeHook(dir, name) {
   const filename = `${dir}/${name}`
@@ -14,9 +12,9 @@ function removeHook(dir, name) {
   }
 }
 
-function uninstallFrom(huskyDir) {
+export default function uninstallFrom(dir) {
   try {
-    const hooksDir = findHooksDir(findParent(huskyDir, '.git'))
+    const hooksDir = findHooksDir(findParent(dir, '.git'))
 
     hooks.forEach(function(hookName) {
       removeHook(hooksDir, hookName)
@@ -26,5 +24,3 @@ function uninstallFrom(huskyDir) {
     console.error(e)
   }
 }
-
-module.exports = uninstallFrom

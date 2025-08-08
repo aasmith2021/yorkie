@@ -1,9 +1,7 @@
-'use strict'
+import fs from 'fs'
+import path from 'path'
 
-const fs = require('fs')
-const path = require('path')
-
-module.exports = function findParent(currentDir, name) {
+export default function findParent(currentDir, name) {
   const dirs = currentDir.split(path.sep)
 
   while (dirs.pop()) {

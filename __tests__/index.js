@@ -1,12 +1,9 @@
-'use strict'
-
-const fs = require('fs')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
-const tempy = require('tempy')
-const installFrom = require('../src/install')
-const uninstallFrom = require('../src/uninstall')
+import fs from 'fs'
+import path from 'path'
+import { mkdirp } from 'mkdirp'
+import { rimraf } from 'rimraf'
+import installFrom from '../src/install'
+import uninstallFrom from '../src/uninstall'
 
 function install(rootDir, dir) {
   installFrom(path.join(rootDir, dir))
@@ -33,8 +30,8 @@ function exists(dir, filePath) {
 }
 
 describe('yorkie', () => {
-  let dir
-  beforeEach(() => (dir = tempy.directory()))
+  const dir = path.join(__dirname, 'temp');
+
   afterEach(() => rimraf.sync(dir))
 
   it('should support basic layout', () => {

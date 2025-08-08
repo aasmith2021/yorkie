@@ -1,11 +1,14 @@
-'use strict'
+#!/user/bin/env node
 
 // Run when package is uninstalled
-const path = require('path')
-const uninstallFrom = require('../src/uninstall')
+import path from 'path'
+import uninstallFrom from '../src/uninstall.js'
+import { fileURLToPath } from 'url'
 
-console.log('husky')
-console.log('uninstalling Git hooks')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+console.log('yorkie: uninstalling Git hooks')
 
 const depDir = path.join(__dirname, '..')
 uninstallFrom(depDir)

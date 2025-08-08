@@ -1,6 +1,4 @@
-'use strict'
-
-const fs = require('fs')
+import fs from 'fs'
 
 function readFile(filename) {
   return fs.readFileSync(filename, 'utf-8')
@@ -21,7 +19,7 @@ function preCommit(filename) {
   return data.indexOf('./node_modules/pre-commit/hook') !== -1
 }
 
-module.exports = {
+export default {
   huskyOrYorkie,
   ghooks,
   preCommit

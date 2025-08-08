@@ -1,9 +1,13 @@
-'use strict'
+#!/user/bin/env node
 
 // Run when package is installed
-const path = require('path')
-const isCI = require('is-ci')
-const installFrom = require('../src/install')
+import path from 'path'
+import isCI from 'is-ci'
+import installFrom from '../src/install.js'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 if (isCI && !process.env.HUSKY_IGNORE_CI && !process.env.YORKIE_IGNORE_CI) {
   console.log('CI detected, skipping Git hooks installation')
@@ -18,7 +22,7 @@ if (process.env.HUSKY_SKIP_INSTALL || process.env.YORKIE_SKIP_INSTALL) {
   process.exit(0)
 }
 
-console.log('setting up Git hooks')
+console.log('yorkie: setting up Git hooks')
 
 const depDir = path.join(__dirname, '..')
 installFrom(depDir)

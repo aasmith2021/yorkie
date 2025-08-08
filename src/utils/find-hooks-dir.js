@@ -1,8 +1,5 @@
-'use strict'
-
-const fs = require('fs')
-const path = require('path')
-const findParent = require('./find-parent')
+import fs from 'fs'
+import path from 'path'
 
 function findHooksDir(dir) {
   if (dir) {
@@ -29,4 +26,4 @@ function findHooksDir(dir) {
   }
 }
 
-module.exports = findHooksDir
+export default findHooksDir

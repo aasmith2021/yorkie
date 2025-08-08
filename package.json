@@ -1,9 +1,10 @@
 {
   "name": "yorkie",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "githooks management forked from husky",
+  "type": "module",
   "engines": {
-    "node": ">=4"
+    "node": ">=22"
   },
   "scripts": {
     "test": "jest",
@@ -39,17 +40,17 @@
   },
   "homepage": "https://github.com/yyx990803/yorkie",
   "devDependencies": {
-    "jest": "^20.0.4",
-    "mkdirp": "^0.5.1",
-    "prettier": "^1.4.4",
-    "rimraf": "^2.6.1",
-    "tempy": "^0.1.0"
+    "@babel/preset-env": "^7.28.0",
+    "jest": "^30.0.5",
+    "mkdirp": "^3.0.1",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
-    "execa": "^0.8.0",
-    "is-ci": "^1.0.10",
-    "normalize-path": "^1.0.0",
-    "strip-indent": "^2.0.0"
+    "execa": "^9.6.0",
+    "is-ci": "^4.1.0",
+    "normalize-path": "^3.0.0",
+    "strip-indent": "^4.0.0"
   },
   "standard": {
     "env": {
