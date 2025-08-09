@@ -68,7 +68,7 @@ export default function installFrom(depDir) {
     if (isInSubNodeModule) {
       return console.log(
         "trying to install from sub 'node_module' directory,",
-        'skipping Git hooks installation'
+        'skipping Git hooks installation',
       )
     }
 
@@ -78,20 +78,26 @@ export default function installFrom(depDir) {
 
     if (hooksDir) {
       hooks
-        .map(function(hookName) {
+        .map(function (hookName) {
           return {
             hookName: hookName,
-            action: createHook(depDir, projectDir, hooksDir, hookName, runnerPath)
+            action: createHook(
+              depDir,
+              projectDir,
+              hooksDir,
+              hookName,
+              runnerPath,
+            ),
           }
         })
-        .forEach(function(item) {
+        .forEach(function (item) {
           switch (item.action) {
             case MIGRATE_GHOOKS:
               console.log(`migrating existing ghooks ${item.hookName} script`)
               break
             case MIGRATE_PRE_COMMIT:
               console.log(
-                `migrating existing pre-commit ${item.hookName} script`
+                `migrating existing pre-commit ${item.hookName} script`,
               )
               break
             case UPDATE:

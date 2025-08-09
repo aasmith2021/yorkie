@@ -12,7 +12,7 @@ function platformSpecific() {
     return stripIndent(
       `
       # Node standard installation
-      export PATH="$PATH:/c/Program Files/nodejs"`
+      export PATH="$PATH:/c/Program Files/nodejs"`,
     )
   } else {
     // Using normalize to support ' in path
@@ -28,7 +28,7 @@ function platformSpecific() {
 
         # Try to load nvm using path of standard installation
         load_nvm ${home}/.nvm
-        run_nvm`
+        run_nvm`,
     )
 
     return arr.join('\n')
@@ -76,7 +76,7 @@ export default function getHookScript(hookName, relativePath, runnerPath) {
       cd "${normalizedPath}"
 
       # Check if ${hookName} is defined, skip if not
-      has_hook_script ${hookName} || exit 0`
+      has_hook_script ${hookName} || exit 0`,
     ).trim(),
 
     platformSpecific(),
@@ -92,7 +92,7 @@ export default function getHookScript(hookName, relativePath, runnerPath) {
         echo "${hookName} hook failed ${noVerifyMessage}"
         exit 1
       }
-      `
-    )
+      `,
+    ),
   ].join('\n')
 }

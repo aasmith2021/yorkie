@@ -22,5 +22,5 @@ function preCommit(filename) {
 export default {
   huskyOrYorkie,
   ghooks,
-  preCommit
+  preCommit,
 }

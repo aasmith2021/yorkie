@@ -16,7 +16,7 @@ export default function uninstallFrom(dir) {
   try {
     const hooksDir = findHooksDir(findParent(dir, '.git'))
 
-    hooks.forEach(function(hookName) {
+    hooks.forEach(function (hookName) {
       removeHook(hooksDir, hookName)
     })
     console.log('done\n')

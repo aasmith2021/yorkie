@@ -15,11 +15,7 @@ export default function findHooksDir(dir) {
       // git: pathToGit
       // On Windows pathToGit can contain ':' (example "gitdir: C:/Some/Path")
       const gitFileData = fs.readFileSync(gitDir, 'utf-8')
-      gitDir = gitFileData
-        .split(':')
-        .slice(1)
-        .join(':')
-        .trim()
+      gitDir = gitFileData.split(':').slice(1).join(':').trim()
     }
 
     return path.resolve(dir, gitDir, 'hooks')
