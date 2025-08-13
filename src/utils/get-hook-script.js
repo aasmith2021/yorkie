@@ -1,8 +1,6 @@
 import normalize from 'normalize-path'
 import stripIndent from 'strip-indent'
-import getYorkiePackageJson from './get-yorkie-package-json.js'
-
-const pkg = getYorkiePackageJson()
+import pkg from '../../package.json' with { type: 'json' }
 
 function platformSpecific() {
   // On OS X and Linux, try to use nvm if it's installed
