@@ -5,6 +5,11 @@ import { rimraf } from 'rimraf'
 import installFrom from '../src/install.js'
 import uninstallFrom from '../src/uninstall.js'
 
+jest.mock('../src/utils/get-yorkie-package-json.js', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({ version: '1.0.0' })),
+}))
+
 function install(rootDir, dir) {
   installFrom(path.join(rootDir, dir))
 }

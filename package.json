@@ -4,7 +4,7 @@
   "description": "githooks management forked from husky",
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=14"
   },
   "scripts": {
     "test": "jest",
