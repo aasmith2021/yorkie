@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { execa } from 'execa'
+import { execa, parseCommandString } from 'execa'
 
 const cwd = process.cwd()
 const pkg = fs.readFileSync(path.join(cwd, 'package.json'))
@@ -17,7 +17,10 @@ if (!command) {
 
 console.log(` > running ${hook} hook: ${command}`)
 try {
-  await execa(command, { stdio: 'inherit' })
+  await execa({ stdio: 'inherit', preferLocal: true })`${parseCommandString(command)}`
+  console.log(` > ${hook} hook completed successfully`)
 } catch (e) {
+  const message = e instanceof Error ? e.message : String(e);
+  console.error(` > ${hook} hook failed with error: ${message}`)
   process.exit(1)
 }
